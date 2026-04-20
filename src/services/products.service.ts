@@ -21,4 +21,7 @@ export class ProductsService {
 async findOne(id: string) {
   return this.productModel.findById(id);
 }
+async update(id: string, body: any) {
+  return this.productModel.findByIdAndUpdate(id, body, { new: true });
+}
 }
