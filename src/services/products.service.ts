@@ -14,4 +14,11 @@ export class ProductsService {
   async create(body: CreateProductDto) {
     return this.productModel.create(body);
   }
+  async findAll() {
+  return this.productModel.find().sort({ createdAt: -1 });
+}
+
+async findOne(id: string) {
+  return this.productModel.findById(id);
+}
 }
