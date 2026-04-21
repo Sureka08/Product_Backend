@@ -24,4 +24,7 @@ async findOne(id: string) {
 async update(id: string, body: any) {
   return this.productModel.findByIdAndUpdate(id, body, { new: true });
 }
+async remove(id: string) {
+  return this.productModel.findByIdAndDelete(id);
+}
 }
