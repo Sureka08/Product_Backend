@@ -1,10 +1,7 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { ProductsService } from '../services/products.service';
 import { CreateProductDto } from '../dto/create-product.dto';
-import { Get, Param } from '@nestjs/common';
-import { Patch } from '@nestjs/common';
 import { UpdateProductDto } from '../dto/update-product.dto';
-import { Delete } from '@nestjs/common';
 
 @Controller('products')
 export class ProductsController {
@@ -14,22 +11,24 @@ export class ProductsController {
   create(@Body() body: CreateProductDto) {
     return this.productsService.create(body);
   }
+
   @Get()
-findAll() {
-  return this.productsService.findAll();
-}
+  findAll() {
+    return this.productsService.findAll();
+  }
 
-@Get(':id')
-findOne(@Param('id') id: string) {
-  return this.productsService.findOne(id);
-}
-@Patch(':id')
-update(@Param('id') id: string, @Body() body: UpdateProductDto) {
-  return this.productsService.update(id, body);
-}
-@Delete(':id')
-remove(@Param('id') id: string) {
-  return this.productsService.remove(id);
-}
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.productsService.findOne(id);
+  }
 
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() body: UpdateProductDto) {
+    return this.productsService.update(id, body);
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.productsService.remove(id);
+  }
 }
